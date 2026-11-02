@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#163A6B"/><stop offset="1" stop-color="#0A1F3D"/>
+  </linearGradient>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="125%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="10"/><feOffset dy="10"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <clipPath id="body"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+</defs>
+<rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)" filter="url(#sh)"/>
+<g clip-path="url(#body)">
+  <rect x="204" y="312" width="240" height="64" rx="8" fill="#F4F6FA"/>
+  <rect x="276" y="312" width="96" height="420" fill="#F4F6FA"/>
+  <rect x="204" y="668" width="240" height="64" rx="8" fill="#F4F6FA"/>
+  <rect x="500" y="312" width="96" height="420" rx="8" fill="#F4F6FA"/>
+  <!-- White behind the flag outlines it against the navy; it skips the pole side so the pole stays as wide as the I. -->
+  <rect x="588" y="312" width="232" height="236" fill="#F4F6FA"/>
+  <rect x="596" y="336" width="200" height="188" fill="#1E5BFF"/>
+  <rect x="654" y="390" width="84" height="80" fill="#FFFFFF"/>
+</g>
+</svg>

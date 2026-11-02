@@ -17,6 +17,7 @@ Requires Xcode 26+ and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew 
 | `make test` | EnsignKit unit tests (`swift test`, no Xcode project needed). |
 | `make release` | Release build plus signature/entitlement checks (fails on `get-task-allow` or a missing sandbox). |
 | `make share` | Release build zipped to `~/Downloads/Ensign-<git describe>.zip`. |
+| `make icon` | Renders `design/AppIcon.svg` into `App/Assets.xcassets/AppIcon.appiconset` (needs `brew install librsvg`). The PNGs are committed, so builds don't need it. |
 | `make clean` | Removes the generated project and all build output. |
 
 Turn on **Launch at login** from the installed copy, not from `make run`. macOS registers the login item at the path the app runs from, and `build/` disappears on `make clean`. `make install` replaces the app at the same path, so the registration survives updates.
@@ -30,6 +31,7 @@ Logs: `/usr/bin/log stream --level info --predicate 'subsystem == "com.nilcolor.
 ## Layout
 
 - `App/`: SwiftUI shell (MenuBarExtra, Settings, notifications). Kept thin.
+- `design/AppIcon.svg`: icon master. "IP" where the P is a flagpole flying Blue Peter, the signal flag for P.
 - `Packages/EnsignKit/`: everything testable:
   - `Providers.swift`: IP services and their response parsers.
   - `IPResolver.swift`: walks a provider chain until one returns a valid address of the requested family.

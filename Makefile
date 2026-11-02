@@ -1,6 +1,6 @@
 # A thin front door over scripts/*.sh.
 .DEFAULT_GOAL := help
-.PHONY: help generate build release share install run test clean
+.PHONY: help generate build release share install run test icon clean
 
 help: ## list targets
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | \
@@ -26,6 +26,9 @@ run: ## build and launch the debug app (for development, not for daily use)
 
 test: ## run the EnsignKit unit tests (no Xcode project needed)
 	./scripts/test.sh
+
+icon: ## render design/AppIcon.svg into the app icon set
+	./scripts/icon.sh
 
 clean: ## remove generated project and build artifacts
 	rm -rf build Ensign.xcodeproj App/Info.plist App/Ensign.entitlements Packages/EnsignKit/.build
