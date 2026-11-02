@@ -1,0 +1,50 @@
+name: Ensign
+options:
+  bundleIdPrefix: com.nilcolor
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+packages:
+  EnsignKit:
+    path: Packages/EnsignKit
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  Ensign:
+    type: application
+    platform: macOS
+    sources: [App]
+    dependencies:
+      - package: EnsignKit
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Ensign
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.utilities
+        LSUIElement: true
+        NSHumanReadableCopyright: "© 2026 Alexey Blinov"
+    entitlements:
+      path: App/Ensign.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nilcolor.Ensign
+        ENABLE_HARDENED_RUNTIME: YES
+        # Ad-hoc until there's a developer team; set DEVELOPMENT_TEAM and drop this for App Store builds.
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+      configs:
+        Release:
+          # Xcode injects get-task-allow when it signs locally, and the App Store and notarization
+          # refuse a binary carrying it. Debug keeps it: that is what lets a debugger attach.
+          CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
